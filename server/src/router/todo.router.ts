@@ -4,7 +4,7 @@ import { controllers } from '../controllers';
 const todoRouter = Router();
 
 // Get all todods
-todoRouter.get('/', controllers.todoController.getAll);
+todoRouter.get('/all', controllers.todoController.getAll);
 
 // Get todo by ID
 todoRouter.get('/:id', controllers.todoController.get);

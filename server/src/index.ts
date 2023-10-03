@@ -4,7 +4,6 @@ import cors from 'cors';
 import express from 'express';
 
 import { router } from './router';
-import { pool } from './db';
 
 const app = express();
 

@@ -1,8 +1,18 @@
+import { pool } from '../db';
 import { tryCatchAsync } from '../utils/try-catch-async';
 
 export const todoController = {
   create: tryCatchAsync(async (req, res) => {
-    res.send('create todo');
+    const { description } = req.body;
+
+    const {
+      rows: [todo],
+    } = await pool.query(
+      'INSERT INTO todo (description, completed) values($1, $2) RETURNING *',
+      [description, false]
+    );
+
+    return res.json(todo);
   }),
 
   getAll: tryCatchAsync(async (req, res) => {
